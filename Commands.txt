@@ -1,1 +1,2 @@
-fgsdf
+1. git init
+	
