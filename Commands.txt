@@ -1,2 +1,21 @@
 1. git init
+	Create a new local repository
+
+	sys : git init
+
+2. git add
+	Adds files in the to the staging area for Git. Before a file is available to commit to a repository, the file 		needs to be added to the Git index (staging area). There are a few different ways to use git add, 
+	by adding entire 	directories, specific files, or all unstaged files
+
+	syn : $ git add <file or directory name>
+
+	# To add all files not staged:
+	$ git add .
+
+	# To stage a specific file:
+	$ git add index.html
+
+	# To stage an entire directory:
+	$ git add css
+
 	
