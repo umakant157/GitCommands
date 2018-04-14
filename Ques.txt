@@ -1,0 +1,5 @@
+1. How to use cat on staged file.
+2. add a file , stage it and then change it..what is the output of git diff ? after commiting and changing again what 	will be the output. 
+3. what diff exactly show.
+4. How to store userid and pass using https.
+5. if i delete a file and commit then how can i list all file in cimmitnig area.
