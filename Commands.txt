@@ -4,7 +4,7 @@
 	sys : git init
 
 2. git add
-	Adds files in the to the staging area for Git. Before a file is available to commit to a repository, the file 		needs to be added to the Git index (staging area). There are a few different ways to use git add, 
+	Adds files in the to the staging area for Git. Before a file is available to commit to a repository, the file 			needs to be added to the Git index (staging area). There are a few different ways to use git add, 
 	by adding entire 	directories, specific files, or all unstaged files
 
 	syn : $ git add <file or directory name>
@@ -18,4 +18,11 @@
 	# To stage an entire directory:
 	$ git add css
 
-	
+3. git commit -m 'message'
+   git commit -a -m 'message'
+
+4. git clone https"//github.com/proj/proj-001
+   git clone https"//github.com/proj/proj-001  mylocalProjectName
+
+5. git status
+
