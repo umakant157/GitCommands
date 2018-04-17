@@ -208,7 +208,7 @@
 	$ git pull
 	$ git push origin master [ git push <remote> <branch> ]
 	$ git push -u origin dev [ You can tell Git to track the newly created remote branch simply by using the -u flag  ]
-
+	$ git branch -u origin/dev  [ Track a remote branch latter ] 
 
 
 
