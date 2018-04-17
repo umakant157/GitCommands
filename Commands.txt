@@ -1,10 +1,25 @@
-1. git init
+﻿
+------------------------------------------------------------------------------------------
+	Basic Commands
+------------------------------------------------------------------------------------------
+
+
+	-------------------------------------
+ 	git init
+
+
 	Create a new local repository
 
 	sys : git init
+	 git config --global user.email "you@example.com"
+	 git config --global user.name "Your Name"
+	
 
-2. git add
-	Adds files in the to the staging area for Git. Before a file is available to commit to a repository, the file 			needs to be added to the Git index (staging area). There are a few different ways to use git add, 
+	-------------------------------------
+	git add
+	
+	Adds files in the to the staging area for Git. Before a file is available to commit to a repository, the file 			
+	needs to be added to the Git 	index (staging area). There are a few different ways to use git add, 
 	by adding entire 	directories, specific files, or all unstaged files
 
 	syn : $ git add <file or directory name>
@@ -18,11 +33,335 @@
 	# To stage an entire directory:
 	$ git add css
 
-3. git commit -m 'message'
-   git commit -a -m 'message'
 
-4. git clone https"//github.com/proj/proj-001
-   git clone https"//github.com/proj/proj-001  mylocalProjectName
+	-------------------------------------
+	git commit -m 'message'
+	git commit -a -m 'message'
 
-5. git status
+	git clone https"//github.com/proj/proj-001
+	git clone https"//github.com/proj/proj-001  mylocalProjectName
+
+
+	-------------------------------------
+	Checking status
+	
+	$ git status
+	$ git status -v
+
+
+	-------------------------------------
+	Checkout Branches
+
+	$ git checkout master
+	$ git checkout --track origin/dev  [ Branch dev set up to track remote branch dev from origin ] 
+
+
+
+
+	-----------------------------------
+	Gitignore file structure
+
+
+	# ignore all .a files
+	*.a
+
+	# but do track lib.a, even though you're ignoring .a files above
+	!lib.a
+
+	# only ignore the TODO file in the current directory, not subdir/TODO
+	/TODO
+
+	# ignore all files in the build/ directory
+	build/
+
+	# ignore doc/notes.txt, but not doc/server/arch.txt
+	doc/*.txt
+
+	# ignore all .pdf files in the doc/ directory and any of its subdirectories
+	doc/**/*.pdf
+		
+
+
+
+
+
+	-------------------------------------
+	Viewing Your Staged and Unstaged Changes
+
+	#To see what you’ve changed but not yet staged, type git diff with no other arguments:
+	$ git diff
+
+	#If you want to see what you’ve staged that will go into your next commit, 
+	$ git diff --staged
+
+	#to see what you’ve staged so far
+	$ git diff --cached
+	$ git diff --staged
+	
+	*Points
+	#It’s important to note that git diff by itself doesn’t show all changes made since your last commit — only 			changes that are still 	unstaged. If you’ve staged all of your changes, git diff will give you no output.
+
+
+
+	------------------------------
+	Removing Files
+
+
+	$ rm PROJECTS.md
+	
+	$ git rm --cached README
+	
+	$ git rm log/\*.log
+	
+	$ git rm \*~
+
+
+
+
+	-------------------------------
+	Moving Files
+
+	$ git mv file_from file_to
+	#If you want to rename a file in Git
+
+	$ mv README.md README [this is equal with ]  $ git rm README.md   $ git add README
+
+
+
+	-----------------------------------
+	Viewing the Commit History
+
+	$ git log
+	$ git log -p -2
+	# which shows the difference (the patch output) introduced in each commit.You can also limit the number of log 	 	  entries displayed
+
+
+	$ git log --oneline 
+	$ git log --oneline --decorate
+	$ git log --stat
+	$ git log --pretty=oneline
+	$ git log --pretty=short
+	$ git log --pretty=full
+	$ git log --pretty=format:"%h - %an, %ar : %s"
+	$ git log --since=2.weeks
+	$ git log --until=2.weeks
+	$ git log --author [ allows you to filter on a specific author ]
+	$ git log --grep [ lets you search for keywords in the commit messages ]
+	$ git log -S function_name
+	$ git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \ --before="2008-11-01" --no-merges -- t/
+	$ git log --oneline --decorate --graph --all [  it will print out the history of your commits ]
+
+	OPtions:-
+
+
+	-p  Show the patch introduced with each commit.
+
+	--stat Show statistics for files modified in each commit.
+
+	--shortstat   Display only the changed/insertions/deletions line from the --stat command.
+
+	--name-only   Show the list of files modified after the commit information.
+
+	--name-status    Show the list of files affected with added/modified/deleted information as well.
+
+	--abbrev-commit    Show only the first few characters of the SHA-1 checksum instead of all 40.
+
+	--relative-date    Display the date in a relative format (for example, “2 weeks ago”) instead of using the full date format.
+
+	--graph    Display an ASCII graph of the branch and merge history beside the log output.
+
+	--pretty    Show commits in an alternate format. Options include oneline, short, full, fuller, and format (where you specify your own format).
+
+	--oneline    Shorthand for --pretty=oneline --abbrev-commit used together.
+
+
+
+
+
+	---------------------------------------
+	Undoing Things
+
+
+	$ git commit --amend 
+	$ git reset HEAD CONTRIBUTING.md  [ unstaging file ]
+	$ git checkout -- CONTRIBUTING.md  [ Unmodifying a Modified File ]
+	
+
+
+
+
+	--------------------------------------------
+	Showing Your Remotes
+
+
+	$ git remote
+	$ git remote -v
+	$ git remote show origin
+
+	# Adding Remote Repositories
+	$ git remote add pb https://github.com/paulboone/ticgit
+	$ git fetch pb
+	$ git remote rename pb paul [ Renaming and Removing Remotes ]
+	$ git remote remove pb paul [ Renaming and Removing Remotes ]
+
+	$ git fetch <remote>
+	$ git pull
+	$ git push origin master [ git push <remote> <branch> ]
+	$ git push -u origin dev [ You can tell Git to track the newly created remote branch simply by using the -u flag  ]
+
+
+
+
+
+
+	-------------------------------------------
+	Tagging
+
+
+	$ git tag
+	$ git tag -l
+	$ git tag -l "v1.8.5*"  [ search tags in pattern ]
+	$ git tag --list
+	
+	$ git tag -a v1.4 -m "my version 1.4"   [ Adding a Tag ]
+	$ git show v1.4 [ You can see the tag data along with the commit that was tagged by using the git show command ]
+
+	$ git tag v1.4-lw [ Lightweight Tags : To create a lightweight tag, don’t supply any of the -a, -s, or -m ]
+
+	$ git tag -a v1.2 9fceb02 [ Tagging Later ]
+
+	$ git push origin v1.5  [ Sharing Tags ]
+	#By default, the git push command doesn’t transfer tags to remote servers
+
+	$ git push origin --tags [ This will transfer all of your tags to the remote server  ]
+
+	
+	$ git checkout 2.0.0 [ Checking out Tags : If you want to view the versions of files a tag is pointing to, you can do a git checkout, ]
+
+
+
+
+
+
+	-------------------------------------------------
+	Git Aliases
+
+
+	$ git config --global alias.co checkout [  ]
+	$ git config --global alias.br branch
+	$ git config --global alias.ci commit [ use : git ci ]
+	$ git config --global alias.st status
+
+	$ git config --global alias.unstage 'reset HEAD --'
+	#This makes the following two commands equivalent:
+	$ git unstage fileA
+	$ git reset HEAD -- fileA
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+	Git Branching
+------------------------------------------------------------------------------------------
+	
+	# Fast-forward merging
+	# merge commit merging
+
+
+	$ git branch testing [ Create a branch ]
+	$ git checkout testing  [ Switching Branches ]
+	$ git checkout -b iss53  [ Create and switched to a new branch "iss53" ]
+	$ git checkout master   $ git merge hotfix  [ master merges the hotfix data ]
+	$ git branch -d hotfix  [ Delte the branch ]
+	$ git mergetool
+
+
+
+	----------------------------------------
+	Branch Management
+	
+	$ git branch
+	$ git branch -v  [ To see the last commit on each branch ]
+	$ git branch --merged [ This and below options can filter this list to branches that you have or have not yet merged into the branch you’re currently on ]
+	$ git branch --no-merged	
+	$ git branch -d testing
+	$ git branch -D testing [ Forcefully delete the branch, if some work has been done. Work will be lost ]
+	$ git branch --no-merged master
+
+
+	-----------------------------------------
+	Remote Branches
+
+	$ git ls-remote [remote], or git remote show [remote]
+	$ get fetch origin
+
+
+	-----------------------------------------
+	Pushing Branches
+
+	$ git push origin serverfix
+	git push origin serverfix:awesomebranch [ Change the branch name on the server as awesomebranch ]
+
+	#It’s important to note that when you do a fetch that brings down new remote-tracking branches, you don’t automatically have local, editable copies 
+	of them. In other words, in this case, you don’t have a new serverfix branch — you only have an origin/serverfix pointer that you can’t modify
+
+	#To merge this work into your current working branch, you can run
+	$ git merge origin/serverfix
+	
+	#If you want your own serverfix branch that you can work on, you can base it off your remote-tracking branch
+	$ git checkout -b serverfix origin/serverfix  and  $ git checkout --track origin/serverfix and $ git checkout serverfix
+
+	#To set up a local branch with a different name than the remote branch
+	$ git checkout -b sf origin/serverfix
+
+	#If you already have a local branch and want to set it to a remote branch you just pulled down, or want to change the upstream branch you’re tracking,
+	$ git branch -u origin/serverfix
+
+	#If you want to see what tracking branches you have set up,
+	$ git branch -vv
+
+	#If you want totally up to date ahead and behind numbers, you’ll need to fetch from all your remotes right before running this. You could do that like this
+	$ git fetch --all; git branch -vv
+
+
+	-----------------------------------------
+	Pulling
+
+	#While the git fetch command will fetch down all the changes on the server that you don’t have yet, it will not modify your working directory at all.
+
+
+	-----------------------------------------	
+	Deleting Remote Branches
+
+	$ git push origin --delete serverfix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 1f35b02591bb11bb46239515715ee7167985e7b8
 
